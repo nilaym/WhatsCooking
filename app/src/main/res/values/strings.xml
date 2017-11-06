@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">WhatsCooking</string>
+    <string name="title_activity_restaurant_menu">RestaurantMenuActivity</string>
+</resources>
