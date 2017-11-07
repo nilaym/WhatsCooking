@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">WhatsCooking</string>
+    <string name="app_name">What\'s Cooking?</string>
     <string name="title_activity_restaurant_menu">RestaurantMenuActivity</string>
 </resources>

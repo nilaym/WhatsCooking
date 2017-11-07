@@ -8,20 +8,24 @@
 
     <Button
         android:id="@+id/b_eat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="247dp"
         android:text="Eating Out?"
+        android:background="@color/colorMaize"
+        android:textColor="@color/colorBlue"
         app:layout_constraintBottom_toTopOf="@+id/b_cook"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/b_cook"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="253dp"
         android:text="Cooking Home?"
+        android:background="@color/colorBlue"
+        android:textColor="@color/colorMaize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

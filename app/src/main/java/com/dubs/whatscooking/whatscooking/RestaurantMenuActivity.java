@@ -94,14 +94,6 @@ public class RestaurantMenuActivity extends AppCompatActivity {
 //        File dir = getFilesDir();
 //        File file = new File(dir, JsonReader.HISTORY_FILENAME);
 //        file.delete();
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         // Read in the menu via menu.json
         JSONObject menuObj = null;
