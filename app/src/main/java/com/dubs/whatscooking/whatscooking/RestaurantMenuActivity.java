@@ -91,9 +91,9 @@ public class RestaurantMenuActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // TODO: FOR TESTING!!!
-//        File dir = getFilesDir();
-//        File file = new File(dir, JsonReader.HISTORY_FILENAME);
-//        file.delete();
+        File dir = getFilesDir();
+        File file = new File(dir, JsonReader.HISTORY_FILENAME);
+        file.delete();
 
         // Read in the menu via menu.json
         JSONObject menuObj = null;

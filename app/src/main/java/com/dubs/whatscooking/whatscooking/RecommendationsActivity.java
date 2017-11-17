@@ -53,9 +53,11 @@ public class RecommendationsActivity extends AppCompatActivity {
         }
 
         ArrayList<String> names = new ArrayList<String>();
-        for (String dish : history.get("NoThai").keySet()) {
-            System.out.println(dish);
-            names.add(dishToRecs.get(dish).get(0));
+        for(String restaurantName : history.keySet()) {
+            for (String dish : history.get(restaurantName).keySet()) {
+                System.out.println(dish);
+                names.add(dishToRecs.get(dish).get(0));
+            }
         }
 
         ListView lv = findViewById(R.id.recs_list_view);

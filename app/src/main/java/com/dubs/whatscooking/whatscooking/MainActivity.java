@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         final Button buttonPiada = findViewById(R.id.b_piada);
-        buttonChipotle.setOnClickListener(new View.OnClickListener() {
+        buttonPiada.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(), RestaurantMenuActivity.class);
                 intent.putExtra("NAME", "Piada");
