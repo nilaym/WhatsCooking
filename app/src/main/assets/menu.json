@@ -1,3 +1,27 @@
 {
-  "NoThai": ["Pad Thai", "Pad See Yu", "Drunken Noodles"]
+  "Pizza House": [
+    "Steamed Veggie Pita",
+    "Caesar Chipati",
+    "Chicago Style",
+    "Thin Crust"
+  ],
+  "NoThai": [
+    "Pad Cashew",
+    "Sweet & Spicy Chicken",
+    "Pad Thai",
+    "Pad See Yu",
+    "Drunken Noodles"
+  ],
+  "Chipotle": [
+    "Burrito",
+    "Bowl",
+  ],
+  "Piada": [
+    "Mediterranean Power Bowl",
+    "Fall Avocado Piada"
+  ],
+  "Panda Express": [
+    "Orange Chicken",
+    "Spicy Soft Tofu"
+  ]
 }
