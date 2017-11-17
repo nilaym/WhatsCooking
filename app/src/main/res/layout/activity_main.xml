@@ -21,7 +21,7 @@
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/b_panda"
         android:layout_width="275dp"
         android:layout_height="101dp"
         android:layout_marginEnd="8dp"
@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/button2" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/b_pizza"
         android:layout_width="294dp"
         android:layout_height="94dp"
         android:layout_marginEnd="36dp"
@@ -47,7 +47,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/b_chipotle"
         android:layout_width="281dp"
         android:layout_height="113dp"
         android:layout_marginEnd="8dp"
@@ -61,7 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/b_nothai" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/b_piada"
         android:layout_width="284dp"
         android:layout_height="97dp"
         android:layout_marginEnd="8dp"
