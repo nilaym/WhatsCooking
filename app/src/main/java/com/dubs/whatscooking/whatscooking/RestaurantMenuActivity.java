@@ -1,38 +1,24 @@
 package com.dubs.whatscooking.whatscooking;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 import android.widget.ListView;
-import android.widget.AdapterView;
+import android.widget.TextView;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONStringer;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.io.File;
 
 public class RestaurantMenuActivity extends AppCompatActivity {
     private static HashMap<String, ArrayList<String>> nameToMenu;
@@ -126,75 +112,13 @@ public class RestaurantMenuActivity extends AppCompatActivity {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
                 R.layout.content_restaurant_menu, nameToMenu.get(restaurantName));
         lv.setAdapter(arrayAdapter);
-        final Context CTX = this.getApplicationContext();
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?>adapter, View v, int position, long id){
                 String dishName = (String) adapter.getItemAtPosition(position);
-
-                // read in history
-                try {
-                    FileInputStream fis = openFileInput(JsonReader.HISTORY_FILENAME);
-                    JSONObject obj = JsonReader.readJsonFromFile(fis);
-                    history = JsonReader.readHistoryMapFromJson(obj);
-                    System.out.println("HISTORY:" + history);
-                }
-                catch(FileNotFoundException e) {
-                    history = new HashMap<String, HashMap<String,Integer>>();
-                    // create file
-                    File f = new File(CTX.getFilesDir(), JsonReader.HISTORY_FILENAME);
-
-                    try {
-                        f.createNewFile();
-                    }
-                    catch(IOException ex) {
-                        System.out.print("ruh-roh there was an IOException within an exception! go fix it!");
-                    }
-                }
-                catch(IOException e) {
-                    System.out.print("ruh-roh there was an IOException! go fix it!");
-                }
-                catch(JSONException e) {
-                    System.out.println("ruh-roh there was a JSON exception in readHistoryMapFromJSON");
-                }
-
-                // update history
-                if (!history.containsKey(restaurantName)) {
-                    history.put(restaurantName, new HashMap<String, Integer>());
-                }
-
-                if (!history.get(restaurantName).containsKey(dishName)) {
-                    history.get(restaurantName).put(dishName, 0);
-                }
-                history.get(restaurantName).put(dishName, history.get(restaurantName).get(dishName) + 1);
-                String userHistoryJson = "{";
-                for (String key : history.keySet()) {
-                    userHistoryJson += "\"" + key + "\":{";
-                    for (String innerKey : history.get(key).keySet()) {
-                        userHistoryJson += "\"" + innerKey + "\":" + history.get(key).get(innerKey) + ",";
-                    }
-                    // substring trailing comma out
-                    userHistoryJson = userHistoryJson.substring(0, userHistoryJson.length() - 1);
-                    userHistoryJson += "},";
-                }
-                // substring trailing comma out
-                userHistoryJson = userHistoryJson.substring(0, userHistoryJson.length() - 1);
-                userHistoryJson += "}";
-                System.out.println("user history json: " + userHistoryJson);
-                // write back history
-                try {
-                    FileOutputStream fos = openFileOutput(JsonReader.HISTORY_FILENAME, Context.MODE_PRIVATE);
-                    fos.write(userHistoryJson.getBytes());
-                    fos.close();
-                }
-                catch (FileNotFoundException e) {
-                    System.out.println("FileNotFoundException in writing back history!");
-                }
-                catch (IOException e) {
-                    System.out.println("IOException in writing back history!");
-                }
-
-                Intent intent = new Intent(getBaseContext(), LandingActivity.class);
+                Intent intent = new Intent(getBaseContext(), SuccessConfirmRating.class);
+                intent.putExtra("Restaurant", restaurantName);
+                intent.putExtra("Dish", dishName);
                 startActivity(intent);
             }
         });
