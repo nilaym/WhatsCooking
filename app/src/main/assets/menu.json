@@ -2,26 +2,72 @@
   "PizzaHouse": [
     "Steamed Veggie Pita",
     "Caesar Chipati",
-    "Chicago Style",
-    "Thin Crust"
+    "Three Cheese Nachos",
+    "Calamari",
+    "Feta Bread",
+    "Cheesy Bread",
+    "Four Cheese Garlic Bread",
+    "Greek Chipati",
+    "Chicken Ranch Chipati",
+    "Hawaiian Pizza",
+    "Margherita Pizza",
+    "Chicken Alfredo Pizza",
+    "Vegetarian Pizza",
+    "Italian Meats Pizza"
   ],
   "NoThai": [
     "Pad Cashew",
     "Sweet & Spicy Chicken",
     "Pad Thai",
     "Pad See Yu",
-    "Drunken Noodles"
+    "Drunken Noodles",
+    "Pad Thai Curry",
+    "Pad Prik",
+    "Pad Kana",
+    "Pad Pak",
+    "Pad Basil",
+    "Green Curry",
+    "Gang Ped",
+    "Gang Pak",
+    "Potato Curry",
+    "Fried Rice",
+    "Curry Fried Rice",
+    "Drunken Fried Rice"
   ],
   "Chipotle": [
-    "Burrito",
-    "Bowl"
+    "Steak Burrito",
+    "Chicken Burrito",
+    "Carnitas Burrito",
+    "Barbacoa Burrito",
+    "Sofritas Burrito"
   ],
   "Piada": [
     "Mediterranean Power Bowl",
-    "Fall Avocado Piada"
+    "Fall Avocado Piada",
+    "Porchetta Sandwich",
+    "Super Greens Salad",
+    "Grain and Apple Salad",
+    "Basil Pesto Pasta",
+    "Carbonara",
+    "Diavolo Pasta",
+    "Fall Avocado Piada",
+    "Tuscan Piada",
+    "Crispy Chicken BLT Tasca",
+    "Italian Trio Tasca"
   ],
   "PandaExpress": [
     "Orange Chicken",
-    "Spicy Soft Tofu"
+    "Spicy Soft Tofu",
+    "String Bean Chicken Breast",
+    "Sweetfire Chicken Breast",
+    "Kung Pao Chicken",
+    "Mushroom Chicken",
+    "Black Pepper Chicken",
+    "Grilled Teriyaki Chicken",
+    "Broccoli Beef",
+    "Shanghai Angus Steak",
+    "Beijing Beef",
+    "Honey Walnut Shrimp",
+    "Eggplant Tofu"
   ]
 }
