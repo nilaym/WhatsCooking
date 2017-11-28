@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.webkit.WebView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -73,9 +74,13 @@ public class RecommendationsActivity extends AppCompatActivity {
                 for (String key : dishToRecs.keySet()) {
                     if (dishToRecs.get(key).get(0).equals(itemClicked)) {
                         String url = dishToRecs.get(key).get(1);
-                        Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setData(Uri.parse(url));
-                        startActivity(intent);
+                        //Intent intent = new Intent(Intent.ACTION_VIEW);
+                        //intent.setData(Uri.parse(url));
+                        //startActivity(intent);
+
+                        Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
+                        webViewIntent.putExtra("url", url);
+                        startActivity(webViewIntent);
                     }
                 }
             }
