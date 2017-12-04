@@ -1,13 +1,12 @@
 package com.dubs.whatscooking.whatscooking;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.content.Intent;
 
-import com.beardedhen.androidbootstrap.BootstrapCircleThumbnail;
 import com.beardedhen.androidbootstrap.TypefaceProvider;
 
 import java.util.ArrayList;
@@ -22,16 +21,16 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         setContentView(R.layout.activity_main);
         TypefaceProvider.registerDefaultIconSets();
 
-        List<Integer> thumbIds = new ArrayList<>(Arrays.asList(R.id.chiptole_thumb,
-                                                        R.id.no_thai_thumb, R.id.panda_express_thumb,
-                                                        R.id.piada_thumb, R.id.pizza_house_thumb));
+        List<Integer> buttonIds = new ArrayList<>(Arrays.asList(R.id.chipotle_button,
+                                                        R.id.no_thai_button, R.id.panda_express_button,
+                                                        R.id.piada_button, R.id.pizza_house_button));
 
         final List<String> extras = new ArrayList<>(Arrays.asList("Chipotle", "NoThai",
                                                             "PandaExpress", "Piada",
                                                             "PizzaHouse"));
 
-        for (int i = 0; i < thumbIds.size(); i++) {
-            final BootstrapCircleThumbnail thumbnail = findViewById(thumbIds.get(i));
+        for (int i = 0; i < buttonIds.size(); i++) {
+            final Button thumbnail = findViewById(buttonIds.get(i));
             final int index = i;  // copying into final b/c of access in onClick()
             thumbnail.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {

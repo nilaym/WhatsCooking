@@ -18,6 +18,12 @@ android {
     }
 }
 
+//allprojects {
+//    repositories {
+//        maven { url 'https://jitpack.io'}
+//    }
+//}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
@@ -29,4 +35,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile 'com.beardedhen:androidbootstrap:2.3.2'
+//    compile 'com.github.apl-devs:appintro:v4.2.2'
 }

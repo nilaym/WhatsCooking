@@ -1,15 +1,14 @@
 package com.dubs.whatscooking.whatscooking;
 
 import android.content.Intent;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.InputFilter;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.webkit.WebView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -63,7 +62,33 @@ public class RecommendationsActivity extends AppCompatActivity {
 
         ListView lv = findViewById(R.id.recs_list_view);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
-                R.layout.content_restaurant_menu, names);
+                R.layout.content_restaurant_menu, names)
+        {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent)
+            {
+                View row = super.getView(position, convertView, parent);
+                switch (position % 5)
+                {
+                    case 0:
+                        row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.rec1));
+                        break;
+                    case 1:
+                        row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.rec2));
+                        break;
+                    case 2:
+                        row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.rec3));
+                        break;
+                    case 3:
+                        row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.rec4));
+                        break;
+                    case 4:
+                        row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.rec5));
+                        break;
+                }
+                return row;
+            }
+        };
         lv.setAdapter(arrayAdapter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

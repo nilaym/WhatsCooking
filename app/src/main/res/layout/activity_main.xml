@@ -1,130 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context="com.dubs.whatscooking.whatscooking.MainActivity">
 
-    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
-        android:id="@+id/pizza_house_thumb"
-        android:layout_width="86dp"
-        android:layout_height="95dp"
-        android:src="@drawable/pizza_house"
-        android:layout_marginLeft="10dp"
-        app:bootstrapBrand="danger"
-        app:hasBorder="true"
-        app:layout_constraintBottom_toTopOf="@+id/panda_express_thumb"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!--<com.beardedhen.androidbootstrap.BootstrapCircleThumbnail-->
+        <!--android:id="@+id/pizza_house_thumb"-->
+        <!--android:layout_width="86dp"-->
+        <!--android:layout_height="95dp"-->
+        <!--android:src="@drawable/pizza_house"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--app:bootstrapBrand="danger"-->
+        <!--app:hasBorder="true"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/panda_express_thumb"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
 
 
-    <TextView
-        android:id="@+id/pizza_house_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <!--<TextView-->
+        <!--android:id="@+id/pizza_house_text"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Pizza House"-->
+        <!--android:textSize="25dp"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/awesomeTextView"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.5"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/pizza_house_thumb"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginTop="-7dp"
+        android:layout_marginBottom="-7dp"
+        android:id="@+id/pizza_house_button"
+        android:drawableLeft="@drawable/picture1"
+        android:background="@color/res1"
         android:text="Pizza House"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/awesomeTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/pizza_house_thumb"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="@android:color/white"/>
 
-    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
-        android:id="@+id/panda_express_thumb"
-        android:layout_width="88dp"
-        android:layout_height="98dp"
-        android:src="@drawable/panda_express"
-        android:layout_marginLeft="10dp"
-        app:bootstrapBrand="danger"
-        app:hasBorder="true"
-        app:layout_constraintBottom_toTopOf="@+id/no_thai_thumb"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pizza_house_thumb" />
+    <!--<com.beardedhen.androidbootstrap.BootstrapCircleThumbnail-->
+        <!--android:id="@+id/panda_express_thumb"-->
+        <!--android:layout_width="88dp"-->
+        <!--android:layout_height="98dp"-->
+        <!--android:src="@drawable/panda_express"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--app:bootstrapBrand="danger"-->
+        <!--app:hasBorder="true"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/no_thai_thumb"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/pizza_house_thumb" />-->
 
-    <TextView
-        android:id="@+id/awesomeTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <!--<TextView-->
+        <!--android:id="@+id/awesomeTextView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Panda Express"-->
+        <!--android:textSize="25dp"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/awesomeTextView2"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.5"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/panda_express_thumb"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/pizza_house_text" />-->
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginTop="-7dp"
+        android:layout_marginBottom="-7dp"
+        android:id="@+id/panda_express_button"
+        android:drawableLeft="@drawable/picture2"
+        android:background="@color/res2"
         android:text="Panda Express"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/awesomeTextView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/panda_express_thumb"
-        app:layout_constraintTop_toBottomOf="@+id/pizza_house_text" />
+        android:textColor="@android:color/white"/>
 
-    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
-        android:id="@+id/no_thai_thumb"
-        android:layout_width="83dp"
-        android:layout_height="90dp"
-        android:src="@drawable/no_thai"
-        android:layout_marginLeft="10dp"
-        app:bootstrapBrand="danger"
-        app:hasBorder="true"
-        app:layout_constraintBottom_toTopOf="@+id/chiptole_thumb"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/panda_express_thumb" />
+    <!--<com.beardedhen.androidbootstrap.BootstrapCircleThumbnail-->
+        <!--android:id="@+id/no_thai_thumb"-->
+        <!--android:layout_width="83dp"-->
+        <!--android:layout_height="90dp"-->
+        <!--android:src="@drawable/no_thai"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--app:bootstrapBrand="danger"-->
+        <!--app:hasBorder="true"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/chiptole_thumb"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/panda_express_thumb" />-->
 
-    <TextView
-        android:id="@+id/awesomeTextView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <!--<TextView-->
+        <!--android:id="@+id/awesomeTextView2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="No Thai"-->
+        <!--android:textSize="25dp"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/awesomeTextView3"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.5"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/no_thai_thumb"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/awesomeTextView" />-->
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginTop="-7dp"
+        android:layout_marginBottom="-7dp"
+        android:id="@+id/no_thai_button"
+        android:drawableLeft="@drawable/picture3"
+        android:background="@color/res3"
         android:text="No Thai"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/awesomeTextView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/no_thai_thumb"
-        app:layout_constraintTop_toBottomOf="@+id/awesomeTextView" />
+        android:textColor="@android:color/white"/>
 
-    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
-        android:id="@+id/chiptole_thumb"
-        android:layout_width="92dp"
-        android:layout_height="91dp"
-        android:src="@drawable/chipotle"
-        android:layout_marginLeft="10dp"
-        app:bootstrapBrand="danger"
-        app:hasBorder="true"
-        app:layout_constraintBottom_toTopOf="@+id/piada_thumb"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/no_thai_thumb" />
+    <!--<com.beardedhen.androidbootstrap.BootstrapCircleThumbnail-->
+        <!--android:id="@+id/chiptole_thumb"-->
+        <!--android:layout_width="92dp"-->
+        <!--android:layout_height="91dp"-->
+        <!--android:src="@drawable/chipotle"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--app:bootstrapBrand="danger"-->
+        <!--app:hasBorder="true"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/piada_thumb"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/no_thai_thumb" />-->
 
-    <TextView
-        android:id="@+id/awesomeTextView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <!--<TextView-->
+        <!--android:id="@+id/awesomeTextView3"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Chipotle"-->
+        <!--android:textSize="25dp"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/awesomeTextView4"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.5"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/chiptole_thumb"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/awesomeTextView2" />-->
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginTop="-7dp"
+        android:layout_marginBottom="-7dp"
+        android:id="@+id/chipotle_button"
+        android:drawableLeft="@drawable/picture4"
+        android:background="@color/res4"
         android:text="Chipotle"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/awesomeTextView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/chiptole_thumb"
-        app:layout_constraintTop_toBottomOf="@+id/awesomeTextView2" />
+        android:textColor="@android:color/white"/>
 
-    <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
-        android:id="@+id/piada_thumb"
-        android:layout_width="90dp"
-        android:layout_height="95dp"
-        android:src="@drawable/piada"
-        android:layout_marginLeft="10dp"
-        app:bootstrapBrand="danger"
-        app:hasBorder="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chiptole_thumb" />
+    <!--<com.beardedhen.androidbootstrap.BootstrapCircleThumbnail-->
+        <!--android:id="@+id/piada_thumb"-->
+        <!--android:layout_width="90dp"-->
+        <!--android:layout_height="95dp"-->
+        <!--android:src="@drawable/piada"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--app:bootstrapBrand="danger"-->
+        <!--app:hasBorder="true"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/chiptole_thumb" />-->
 
-    <TextView
-        android:id="@+id/awesomeTextView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <!--<TextView-->
+        <!--android:id="@+id/awesomeTextView4"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Piada"-->
+        <!--android:textSize="25dp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.5"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/piada_thumb"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/awesomeTextView3" />-->
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginTop="-7dp"
+        android:layout_marginBottom="-7dp"
+        android:id="@+id/piada_button"
+        android:drawableLeft="@drawable/picture5"
+        android:background="@color/res5"
         android:text="Piada"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/piada_thumb"
-        app:layout_constraintTop_toBottomOf="@+id/awesomeTextView3" />
+        android:textColor="@android:color/white"/>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

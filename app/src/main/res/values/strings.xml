@@ -2,4 +2,25 @@
     <string name="app_name">What\'s Cooking?</string>
     <string name="title_activity_restaurant_menu">RestaurantMenuActivity</string>
     <string name="title_activity_web_view">WebViewActivity</string>
+
+    <!--<string name="app_name">Intro Slider</string>-->
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">WhatsCooking?</string>
+    <string name="slide_1_desc">The easiest way to get recipes you <i>know</i> you will enjoy.</string>
+
+    <string name="slide_2_title">Eating Out?</string>
+    <string name="slide_2_desc">Log the meals that you eat out at your favorite restaurants.</string>
+
+    <string name="slide_3_title">Cooking at Home?</string>
+    <string name="slide_3_desc">See recipe recommendations based on the meals you logged!</string>
+
+    <string name="slide_4_title">Ready to Start?</string>
+    <string name="slide_4_desc">Dive into WhatsCooking? Say goodbye to hours of tedious recipe searching.</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
 </resources>
