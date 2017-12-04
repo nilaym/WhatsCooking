@@ -12,6 +12,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.webkit.WebView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,11 +26,15 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -35,21 +44,115 @@ public class RecommendationsActivity extends AppCompatActivity {
     private HashMap<String, HashMap<String, Integer>> history;
     private HashMap<String, ArrayList<String>> dishToRecs;
 
+    public HashMap<String, String> reccToSource;
+
+    private class GetRecommendationsAsync extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... passing) {
+            String[] result = new String[10];
+
+            try {
+                // Create URL
+                URL yummlyEndpoint = new URL("https://api.yummly.com/v1/api/recipes?q=onion+soup");
+                HttpsURLConnection myConnection =
+                        (HttpsURLConnection) yummlyEndpoint.openConnection();
+                // Request Headers
+                myConnection.setRequestProperty("User-Agent", "whats-cooking-v0.1");
+                myConnection.setRequestProperty("X-Yummly-App-ID", "18a94cf5");
+                myConnection.setRequestProperty("X-Yummly-App-Key", "1631dceffd5445513e8982e9d47431b7");
+                if (myConnection.getResponseCode() == 200) {
+                    InputStream responseBody = myConnection.getInputStream();
+                    JSONObject yummlyResponse = JsonReader.readJsonFromFile(responseBody);
+
+                    // Get a list of match objects. Convert those to a list of IDs
+                    JSONArray matches = (JSONArray) yummlyResponse.get("matches");
+                    ArrayList<String> matchids = new ArrayList<>();
+                    for (int i = 0; i < matches.length(); i++) {
+                        JSONObject match = (JSONObject) matches.get(i);
+                        matchids.add((String)match.get("id"));
+                    }
+
+                    // For each ID, execute another API request
+                    for (int i = 0; i < matchids.size(); i++) {
+                        String endpointUrl = "https://api.yummly.com/v1/api/recipe/" + matchids.get(i);
+                        URL yummlyIdEndpoint = new URL(endpointUrl);
+                        HttpsURLConnection idConnection =
+                                (HttpsURLConnection) yummlyIdEndpoint.openConnection();
+                        // Request Headers
+                        idConnection.setRequestProperty("User-Agent", "whats-cooking-v0.1");
+                        idConnection.setRequestProperty("X-Yummly-App-ID", "18a94cf5");
+                        idConnection.setRequestProperty("X-Yummly-App-Key", "1631dceffd5445513e8982e9d47431b7");
+
+                        if (idConnection.getResponseCode() == 200) {
+                            InputStream idResponseBody = idConnection.getInputStream();
+                            JSONObject yummlyIdResponse = JsonReader.readJsonFromFile(idResponseBody);
+
+                            RecommendationsActivity.prettyPrintJson(yummlyIdResponse.toString());
+                            String recipeName = (String) yummlyIdResponse.get("name");
+                            String sourceUrl = (String) ((JSONObject)yummlyIdResponse.get("source")).get("sourceRecipeUrl");
+                            RecommendationsActivity.this.reccToSource.put(recipeName, sourceUrl);
+                        }
+                    }
+                } else {
+                    System.out.println("YOU SUCK");
+                }
+            } catch(MalformedURLException e) {
+                System.out.println("malformed url!");
+            } catch(IOException e) {
+                System.out.println("wtf io exception thrown");
+            } catch(JSONException e) {
+                e.printStackTrace();
+                System.out.println("yayayayaya fuck json exceptions");
+            }
+
+            return null; //return result
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            ListView lv = findViewById(R.id.recs_list_view);
+            Set<String> reccNamesSet = RecommendationsActivity.this.reccToSource.keySet();
+            ArrayList<String> reccNames = new ArrayList<>();
+            Iterator<String> it = reccNamesSet.iterator();
+            while (it.hasNext()) {
+                reccNames.add(it.next());
+            }
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(RecommendationsActivity.this,
+                    R.layout.content_restaurant_menu, reccNames);
+            lv.setAdapter(arrayAdapter);
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    String itemClicked = (String) adapterView.getItemAtPosition(i);
+                    String url = RecommendationsActivity.this.reccToSource.get(itemClicked);
+
+                    Intent webViewIntent = new Intent(RecommendationsActivity.this, WebViewActivity.class);
+                    webViewIntent.putExtra("url", url);
+                    startActivity(webViewIntent);
+                }
+            });
+        }
+    }
+
+    public static void prettyPrintJson(String jsonStr) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        JsonParser jp = new JsonParser();
+        JsonElement je = jp.parse(jsonStr);
+        String prettyJsonString = gson.toJson(je);
+        System.out.println(prettyJsonString);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommendations);
 
+        this.reccToSource = new HashMap<>();
 
         try {
             FileInputStream fis = openFileInput(JsonReader.HISTORY_FILENAME);
             JSONObject obj = JsonReader.readJsonFromFile(fis);
             history = JsonReader.readHistoryMapFromJson(obj);
-
-//            InputStream is = this.getApplicationContext().getAssets().open("recommendations.json");
-//            JSONObject recsObj = JsonReader.readJsonFromFile(is);
-//            dishToRecs = JsonReader.readMapFromJson(recsObj);
-//            System.out.println(dishToRecs.toString());
         }
         catch (FileNotFoundException e) {
             System.out.println("you shouldn't access this until history is totally set");
@@ -61,73 +164,7 @@ public class RecommendationsActivity extends AppCompatActivity {
             System.out.println("im tired of exceptions");
         }
 
-//        ArrayList<String> names = new ArrayList<String>();
-//        for(String restaurantName : history.keySet()) {
-//            for (String dish : history.get(restaurantName).keySet()) {
-//                System.out.println(dish);
-//                names.add(dishToRecs.get(dish).get(0));
-//            }
-//        }
-
-        AsyncTask.execute(new Runnable() {
-            @Override
-            public void run() {
-                // Create URL
-                try {
-                    URL yummlyEndpoint = new URL("https://api.yummly.com/v1/api/recipes?q=onion+soup");
-                    HttpsURLConnection myConnection =
-                            (HttpsURLConnection) yummlyEndpoint.openConnection();
-                    myConnection.setRequestProperty("User-Agent", "whats-cooking-v0.1");
-                    myConnection.setRequestProperty("X-Yummly-App-ID", "18a94cf5");
-                    myConnection.setRequestProperty("X-Yummly-App-Key", "1631dceffd5445513e8982e9d47431b7");
-//                    String queryParam = "q=onion";
-//                    myConnection.setDoOutput(true);
-//                    myConnection.getOutputStream().write(queryParam.getBytes());
-                    if (myConnection.getResponseCode() == 200) {
-                        InputStream responseBody = myConnection.getInputStream();
-                        InputStreamReader responseBodyReader =
-                                new InputStreamReader(responseBody, "UTF-8");
-                        JSONObject yummlyResponse = JsonReader.readJsonFromFile(responseBody);
-
-                        System.out.println(yummlyResponse);
-                        JSONArray matches = (JSONArray) yummlyResponse.get("matches");
-                        ArrayList<String> matchids = new ArrayList<>();
-                        for (int i = 0; i < matches.length(); i++) {
-                            // do nothing
-                        }
-                    } else {
-                        System.out.println("YOU SUCK");
-                    }
-                } catch(MalformedURLException e) {
-                    System.out.println("malformed url!");
-                } catch(IOException e) {
-                    System.out.println("wtf io exception thrown");
-                } catch(JSONException e) {
-                    System.out.println("yayayayaya fuck json exceptions");
-                }
-            }
-        });
-
-
-//        ListView lv = findViewById(R.id.recs_list_view);
-//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
-//                R.layout.content_restaurant_menu, names);
-//        lv.setAdapter(arrayAdapter);
-//        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                String itemClicked = (String) adapterView.getItemAtPosition(i);
-//
-//                // search for the associated URL in dishToRecs
-//                for (String key : dishToRecs.keySet()) {
-//                    if (dishToRecs.get(key).get(0).equals(itemClicked)) {
-//                        String url = dishToRecs.get(key).get(1);
-//                        Intent webViewIntent = new Intent(getBaseContext(), WebViewActivity.class);
-//                        webViewIntent.putExtra("url", url);
-//                        startActivity(webViewIntent);
-//                    }
-//                }
-//            }
-//        });
+        GetRecommendationsAsync asyncTask = new GetRecommendationsAsync();
+        asyncTask.execute();
     }
 }
