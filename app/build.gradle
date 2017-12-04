@@ -36,4 +36,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile 'com.beardedhen:androidbootstrap:2.3.2'
 //    compile 'com.github.apl-devs:appintro:v4.2.2'
+    compile 'com.google.code.gson:gson:2.8.2'
 }
