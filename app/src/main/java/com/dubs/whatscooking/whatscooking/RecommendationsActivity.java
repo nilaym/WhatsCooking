@@ -21,6 +21,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -50,51 +51,67 @@ public class RecommendationsActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... passing) {
             String[] result = new String[10];
+            String baseYummlyUrl = "https://api.yummly.com/v1/api/recipes";
 
             try {
-                // Create URL
-                URL yummlyEndpoint = new URL("https://api.yummly.com/v1/api/recipes?q=onion+soup");
-                HttpsURLConnection myConnection =
-                        (HttpsURLConnection) yummlyEndpoint.openConnection();
-                // Request Headers
-                myConnection.setRequestProperty("User-Agent", "whats-cooking-v0.1");
-                myConnection.setRequestProperty("X-Yummly-App-ID", "18a94cf5");
-                myConnection.setRequestProperty("X-Yummly-App-Key", "1631dceffd5445513e8982e9d47431b7");
-                if (myConnection.getResponseCode() == 200) {
-                    InputStream responseBody = myConnection.getInputStream();
-                    JSONObject yummlyResponse = JsonReader.readJsonFromFile(responseBody);
-
-                    // Get a list of match objects. Convert those to a list of IDs
-                    JSONArray matches = (JSONArray) yummlyResponse.get("matches");
-                    ArrayList<String> matchids = new ArrayList<>();
-                    for (int i = 0; i < matches.length(); i++) {
-                        JSONObject match = (JSONObject) matches.get(i);
-                        matchids.add((String)match.get("id"));
-                    }
-
-                    // For each ID, execute another API request
-                    for (int i = 0; i < matchids.size(); i++) {
-                        String endpointUrl = "https://api.yummly.com/v1/api/recipe/" + matchids.get(i);
-                        URL yummlyIdEndpoint = new URL(endpointUrl);
-                        HttpsURLConnection idConnection =
-                                (HttpsURLConnection) yummlyIdEndpoint.openConnection();
+                System.out.println("LENGTH OF HISTORY: " + RecommendationsActivity.this.history.keySet().size());
+                Iterator<String> it = RecommendationsActivity.this.history.keySet().iterator();
+                while (it.hasNext()) {
+                    String restaurantName = it.next();
+                    Set<String> dishes = RecommendationsActivity.this.history.get(restaurantName).keySet();
+                    for (String dish : dishes) {
+                        String queryArgs = "";
+                        for (String namePart : dish.split(" ")) {
+                            queryArgs += namePart + "+";
+                        }
+                        queryArgs = queryArgs.substring(0, queryArgs.length()-1);
+                        System.out.println("QUERY:" + queryArgs);
+                        // Create URL
+                        URL yummlyEndpoint = new URL(baseYummlyUrl + "?q=" + queryArgs);
+                        System.out.println("FULL URL: " + baseYummlyUrl + "?q=" + queryArgs);
+                        HttpsURLConnection myConnection =
+                                (HttpsURLConnection) yummlyEndpoint.openConnection();
                         // Request Headers
-                        idConnection.setRequestProperty("User-Agent", "whats-cooking-v0.1");
-                        idConnection.setRequestProperty("X-Yummly-App-ID", "18a94cf5");
-                        idConnection.setRequestProperty("X-Yummly-App-Key", "1631dceffd5445513e8982e9d47431b7");
+                        myConnection.setRequestProperty("User-Agent", "whats-cooking-v0.1");
+                        myConnection.setRequestProperty("X-Yummly-App-ID", "18a94cf5");
+                        myConnection.setRequestProperty("X-Yummly-App-Key", "1631dceffd5445513e8982e9d47431b7");
+                        if (myConnection.getResponseCode() == 200) {
+                            InputStream responseBody = myConnection.getInputStream();
+                            JSONObject yummlyResponse = JsonReader.readJsonFromFile(responseBody);
 
-                        if (idConnection.getResponseCode() == 200) {
-                            InputStream idResponseBody = idConnection.getInputStream();
-                            JSONObject yummlyIdResponse = JsonReader.readJsonFromFile(idResponseBody);
+                            // Get a list of match objects. Convert those to a list of IDs
+                            JSONArray matches = (JSONArray) yummlyResponse.get("matches");
+                            ArrayList<String> matchids = new ArrayList<>();
+                            for (int i = 0; i < matches.length(); i++) {
+                                JSONObject match = (JSONObject) matches.get(i);
+                                matchids.add((String) match.get("id"));
+                            }
 
-                            RecommendationsActivity.prettyPrintJson(yummlyIdResponse.toString());
-                            String recipeName = (String) yummlyIdResponse.get("name");
-                            String sourceUrl = (String) ((JSONObject)yummlyIdResponse.get("source")).get("sourceRecipeUrl");
-                            RecommendationsActivity.this.reccToSource.put(recipeName, sourceUrl);
+                            // For each ID, execute another API request
+                            for (int i = 0; i < matchids.size(); i++) {
+                                String endpointUrl = "https://api.yummly.com/v1/api/recipe/" + matchids.get(i);
+                                URL yummlyIdEndpoint = new URL(endpointUrl);
+                                HttpsURLConnection idConnection =
+                                        (HttpsURLConnection) yummlyIdEndpoint.openConnection();
+                                // Request Headers
+                                idConnection.setRequestProperty("User-Agent", "whats-cooking-v0.1");
+                                idConnection.setRequestProperty("X-Yummly-App-ID", "18a94cf5");
+                                idConnection.setRequestProperty("X-Yummly-App-Key", "1631dceffd5445513e8982e9d47431b7");
+
+                                if (idConnection.getResponseCode() == 200) {
+                                    InputStream idResponseBody = idConnection.getInputStream();
+                                    JSONObject yummlyIdResponse = JsonReader.readJsonFromFile(idResponseBody);
+
+//                                RecommendationsActivity.prettyPrintJson(yummlyIdResponse.toString());
+                                    String recipeName = (String) yummlyIdResponse.get("name");
+                                    String sourceUrl = (String) ((JSONObject) yummlyIdResponse.get("source")).get("sourceRecipeUrl");
+                                    RecommendationsActivity.this.reccToSource.put(recipeName, sourceUrl);
+                                }
+                            }
+                        } else {
+                            System.out.println("YOU SUCK");
                         }
                     }
-                } else {
-                    System.out.println("YOU SUCK");
                 }
             } catch(MalformedURLException e) {
                 System.out.println("malformed url!");
@@ -146,6 +163,30 @@ public class RecommendationsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommendations);
+
+        try {
+            FileInputStream fis = openFileInput(JsonReader.HISTORY_FILENAME);
+            JSONObject obj = JsonReader.readJsonFromFile(fis);
+            this.history = JsonReader.readHistoryMapFromJson(obj);
+        }
+        catch(FileNotFoundException e) {
+            this.history = new HashMap<String, HashMap<String,Integer>>();
+            // create file
+            File f = new File(this.getApplicationContext().getFilesDir(), JsonReader.HISTORY_FILENAME);
+
+            try {
+                f.createNewFile();
+            }
+            catch(IOException ex) {
+                System.out.print("ruh-roh there was an IOException within an exception! go fix it!");
+            }
+        }
+        catch(IOException e) {
+            System.out.print("ruh-roh there was an IOException! go fix it!");
+        }
+        catch(JSONException e) {
+            System.out.println("ruh-roh there was a JSON exception in readHistoryMapFromJSON");
+        }
 
         this.reccToSource = new HashMap<>();
 
