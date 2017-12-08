@@ -118,23 +118,23 @@ public class RestaurantMenuActivity extends AppCompatActivity {
             public View getView(int position, View convertView, ViewGroup parent)
             {
                 View row = super.getView(position, convertView, parent);
-                switch (position % 5)
+                switch (position % 2)
                 {
                     case 0:
-                        row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.res1));
+                        row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.resA));
                         break;
                     case 1:
-                        row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.res2));
+                        row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.resB));
                         break;
-                    case 2:
-                        row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.res3));
-                        break;
-                    case 3:
-                        row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.res4));
-                        break;
-                    case 4:
-                        row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.res5));
-                        break;
+//                    case 2:
+//                        row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.res3));
+//                        break;
+//                    case 3:
+//                        row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.res4));
+//                        break;
+//                    case 4:
+//                        row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.res5));
+//                        break;
                 }
                 return row;
             }

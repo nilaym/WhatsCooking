@@ -135,23 +135,23 @@ public class RecommendationsActivity extends AppCompatActivity {
                 public View getView(int position, View convertView, ViewGroup parent)
                 {
                     View row = super.getView(position, convertView, parent);
-                    switch (position % 5)
+                    switch (position % 2)
                     {
                         case 0:
-                            row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.rec1));
+                            row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.recA));
                             break;
                         case 1:
-                            row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.rec2));
+                            row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.recB));
                             break;
-                        case 2:
-                            row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.rec3));
-                            break;
-                        case 3:
-                            row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.rec4));
-                            break;
-                        case 4:
-                            row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.rec5));
-                            break;
+//                        case 2:
+//                            row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.rec3));
+//                            break;
+//                        case 3:
+//                            row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.rec4));
+//                            break;
+//                        case 4:
+//                            row.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.rec5));
+//                            break;
                     }
                     return row;
                 }
