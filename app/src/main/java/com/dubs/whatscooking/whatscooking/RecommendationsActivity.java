@@ -111,6 +111,7 @@ public class RecommendationsActivity extends AppCompatActivity {
             } catch(MalformedURLException e) {
                 System.out.println("malformed url!");
             } catch(IOException e) {
+                e.printStackTrace();
                 System.out.println("wtf io exception thrown");
             } catch(JSONException e) {
                 e.printStackTrace();
@@ -157,6 +158,8 @@ public class RecommendationsActivity extends AppCompatActivity {
                     return row;
                 }
             };
+            System.out.println("WE FINISHED");
+            System.out.println(reccNames.toString());
             lv.setAdapter(arrayAdapter);
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override

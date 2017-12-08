@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     tools:context="com.dubs.whatscooking.whatscooking.RecommendationsActivity">
 
-    <inlcude layout="@layout/toolbar" android:id="@+id/recs_toolbae"/>
-
     <!--<include layout="@layout/content_restaurant_menu" />-->
+
+    <include android:id="@+id/recs_toolbae" layout="@layout/toolbar" />
 
     <ListView
         android:id="@+id/recs_list_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"></ListView>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 </android.support.constraint.ConstraintLayout>
