@@ -76,8 +76,8 @@ public class RestaurantMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_menu);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.menu_toolbae);
+        setSupportActionBar(toolbar);  // what a fucking tool
         // TODO: FOR TESTING!!!
         File dir = getFilesDir();
         File file = new File(dir, JsonReader.HISTORY_FILENAME);

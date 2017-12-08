@@ -1,32 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dubs.whatscooking.whatscooking.LandingActivity">
+    android:orientation="vertical">
 
     <include
-        android:id="@+id/include"
+        android:id="@+id/landing_toolbae"
         layout="@layout/toolbar" />
 
     <Button
         android:id="@+id/b_eat"
         android:layout_width="match_parent"
-        android:layout_height="255dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:background="@color/bg_screen2"
         android:text="Eating Out?"
-        android:textColor="@android:color/white"
-        app:layout_constraintTop_toBottomOf="@+id/include"
-        tools:layout_editor_absoluteX="0dp" />
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/b_cook"
         android:layout_width="match_parent"
-        android:layout_height="255dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:background="@color/bg_screen3"
         android:text="Cooking at Home?"
-        android:textColor="@android:color/white"
-        app:layout_constraintTop_toBottomOf="@+id/b_eat"
-        tools:layout_editor_absoluteX="0dp" />
-</android.support.constraint.ConstraintLayout>
+        android:textColor="@android:color/white" />
+
+</LinearLayout>
+<!--<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--tools:context="com.dubs.whatscooking.whatscooking.LandingActivity">-->
+
+    <!--<include-->
+        <!--android:id="@+id/include"-->
+        <!--layout="@layout/toolbar" />-->
+
+    <!--<Button-->
+        <!--android:id="@+id/b_eat"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="255dp"-->
+        <!--android:background="@color/bg_screen2"-->
+        <!--android:text="Eating Out?"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/include"-->
+        <!--tools:layout_editor_absoluteX="0dp" />-->
+
+    <!--<Button-->
+        <!--android:id="@+id/b_cook"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="255dp"-->
+        <!--android:background="@color/bg_screen3"-->
+        <!--android:text="Cooking at Home?"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/b_eat"-->
+        <!--tools:layout_editor_absoluteX="0dp" />-->
+<!--</android.support.constraint.ConstraintLayout>-->

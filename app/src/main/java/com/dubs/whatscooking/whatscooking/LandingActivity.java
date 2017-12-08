@@ -14,9 +14,8 @@ public class LandingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.include);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.landing_toolbae);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("What's Cooking?");
 
         Button buttonEatOut = findViewById(R.id.b_eat);
         Button buttonCookHome = findViewById(R.id.b_cook);

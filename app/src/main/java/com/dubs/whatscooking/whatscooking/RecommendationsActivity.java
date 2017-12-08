@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -183,6 +184,9 @@ public class RecommendationsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommendations);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.recs_toolbae);
+        setSupportActionBar(toolbar);
 
         try {
             FileInputStream fis = openFileInput(JsonReader.HISTORY_FILENAME);

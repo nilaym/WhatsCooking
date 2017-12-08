@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     tools:context="com.dubs.whatscooking.whatscooking.RecommendationsActivity">
 
-    <include layout="@layout/content_restaurant_menu" />
+    <inlcude layout="@layout/toolbar" android:id="@+id/recs_toolbae"/>
+
+    <!--<include layout="@layout/content_restaurant_menu" />-->
 
     <ListView
         android:id="@+id/recs_list_view"
