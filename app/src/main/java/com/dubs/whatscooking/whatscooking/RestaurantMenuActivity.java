@@ -28,7 +28,10 @@ public class RestaurantMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_menu);
+        Bundle bundle = getIntent().getExtras();
+        final String restaurantName = bundle.getString("NAME");
         Toolbar toolbar = (Toolbar) findViewById(R.id.menu_toolbae);
+        toolbar.setTitle(restaurantName);
         setSupportActionBar(toolbar);
 
         // TODO: FOR TESTING!!!
@@ -53,9 +56,6 @@ public class RestaurantMenuActivity extends AppCompatActivity {
         }
 
         nameToMenu = JsonReader.readMapFromJson(menuObj);
-
-        Bundle bundle = getIntent().getExtras();
-        final String restaurantName = bundle.getString("NAME");
 
         System.out.println(restaurantName);
         System.out.println(nameToMenu.get(restaurantName));
