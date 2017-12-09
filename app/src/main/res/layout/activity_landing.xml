@@ -28,4 +28,15 @@
         android:textSize="20dp"
         android:textColor="@android:color/black" />
 
+    <!--<TextView-->
+        <!--android:id="@+id/yummly_text"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/bg_screen1"-->
+        <!--android:text="@string/link"-->
+        <!--android:linksClickable="true"-->
+        <!--android:autoLink="web"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--android:textAlignment="center"/>-->
+
 </LinearLayout>
