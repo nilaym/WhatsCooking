@@ -1,5 +1,6 @@
 package com.dubs.whatscooking.whatscooking;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -43,7 +44,20 @@ public class RecommendationsActivity extends AppCompatActivity {
 
     public HashMap<String, String> reccToSource;
 
+    public ProgressDialog dialog;
+
     private class GetRecommendationsAsync extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected void onPreExecute() {
+            RecommendationsActivity.this.dialog = new ProgressDialog(RecommendationsActivity.this); // this = YourActivity
+            RecommendationsActivity.this.dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            RecommendationsActivity.this.dialog.setMessage("Loading. Please wait...");
+            RecommendationsActivity.this.dialog.setIndeterminate(true);
+            RecommendationsActivity.this.dialog.setIndeterminateDrawable(RecommendationsActivity.this.getDrawable(R.drawable.yummly));
+            RecommendationsActivity.this.dialog.setCanceledOnTouchOutside(false);
+            RecommendationsActivity.this.dialog.show();
+        }
+
         @Override
         protected Void doInBackground(Void... passing) {
             String baseYummlyUrl = "https://api.yummly.com/v1/api/recipes";
@@ -123,6 +137,7 @@ public class RecommendationsActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void result) {
+            RecommendationsActivity.this.dialog.dismiss();
             ListView lv = findViewById(R.id.recs_list_view);
             Set<String> reccNamesSet = RecommendationsActivity.this.reccToSource.keySet();
             ArrayList<String> reccNames = new ArrayList<>();
