@@ -169,6 +169,7 @@ public class RecommendationsActivity extends AppCompatActivity {
 
                     Intent webViewIntent = new Intent(RecommendationsActivity.this, WebViewActivity.class);
                     webViewIntent.putExtra("url", url);
+                    webViewIntent.putExtra("recipe", itemClicked);
                     startActivity(webViewIntent);
                 }
             });

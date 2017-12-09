@@ -34,10 +34,10 @@ public class RestaurantMenuActivity extends AppCompatActivity {
         toolbar.setTitle(restaurantName.replaceAll("(\\p{Ll})(\\p{Lu})","$1 $2"));
         setSupportActionBar(toolbar);
 
-        // TODO: FOR TESTING!!!
-        File dir = getFilesDir();
-        File file = new File(dir, JsonReader.HISTORY_FILENAME);
-        file.delete();
+//        // TODO: FOR TESTING!!!
+//        File dir = getFilesDir();
+//        File file = new File(dir, JsonReader.HISTORY_FILENAME);
+//        file.delete();
 
         // Read in the menu via menu.json
         JSONObject menuObj = null;
