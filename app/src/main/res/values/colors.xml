@@ -13,11 +13,17 @@
     <color name="res4">#40e0d0</color>
     <color name="res5">#3bd6c6</color>
 
+    <color name="resA">#36d7b7</color>
+    <color name="resB">#1bbc9b</color>
+
     <color name="rec1">#4FC3F7</color>
     <color name="rec2">#29B6F6</color>
     <color name="rec3">#03A9F4</color>
     <color name="rec4">#039BE5</color>
     <color name="rec5">#0288D1</color>
+
+    <color name="recA">#59abe3</color>
+    <color name="recB">#6593f5</color>
     <!--<color name="textColor">#CDCDCD</color>-->
     <!--<color name="colorPrimary">#3F51B5</color>-->
     <!--<color name="colorPrimaryDark">#303F9F</color>-->

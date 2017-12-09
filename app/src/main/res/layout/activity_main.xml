@@ -9,7 +9,7 @@
     <include
         android:id="@+id/main_toolbae"
         layout="@layout/toolbar" />
-
+  
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -18,9 +18,9 @@
         android:layout_marginBottom="0dp"
         android:id="@+id/pizza_house_button"
         android:drawableLeft="@drawable/picture1"
-        android:background="@color/res1"
+        android:background="@color/resA"
         android:text="Pizza House"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/black"/>
 
     <Button
         android:layout_width="match_parent"
@@ -30,9 +30,9 @@
         android:layout_marginBottom="0dp"
         android:id="@+id/panda_express_button"
         android:drawableLeft="@drawable/picture2"
-        android:background="@color/res2"
+        android:background="@color/resB"
         android:text="Panda Express"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/black"/>
 
     <Button
         android:layout_width="match_parent"
@@ -42,9 +42,9 @@
         android:layout_marginBottom="0dp"
         android:id="@+id/no_thai_button"
         android:drawableLeft="@drawable/picture3"
-        android:background="@color/res3"
+        android:background="@color/resA"
         android:text="No Thai"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/black"/>
 
     <Button
         android:layout_width="match_parent"
@@ -54,9 +54,9 @@
         android:layout_marginBottom="0dp"
         android:id="@+id/chipotle_button"
         android:drawableLeft="@drawable/picture4"
-        android:background="@color/res4"
+        android:background="@color/resB"
         android:text="Chipotle"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/black"/>
 
     <Button
         android:layout_width="match_parent"
@@ -66,8 +66,8 @@
         android:layout_marginBottom="0dp"
         android:id="@+id/piada_button"
         android:drawableLeft="@drawable/picture5"
-        android:background="@color/res5"
+        android:background="@color/resA"
         android:text="Piada"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/black"/>
 
 </LinearLayout>
