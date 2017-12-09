@@ -18,6 +18,7 @@ public class WebViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_web_view);
         Toolbar toolbar = (Toolbar) findViewById(R.id.web_toolbae);
         setSupportActionBar(toolbar);
+        System.out.println("FUCK YEAH THIS SHIT IS WORKING");
 
         Bundle bundle = getIntent().getExtras();
         final String url = bundle.getString("url");
