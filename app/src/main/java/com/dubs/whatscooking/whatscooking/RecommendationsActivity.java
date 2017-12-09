@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -110,6 +111,7 @@ public class RecommendationsActivity extends AppCompatActivity {
             } catch(MalformedURLException e) {
                 System.out.println("malformed url!");
             } catch(IOException e) {
+                e.printStackTrace();
                 System.out.println("wtf io exception thrown");
             } catch(JSONException e) {
                 e.printStackTrace();
@@ -156,6 +158,8 @@ public class RecommendationsActivity extends AppCompatActivity {
                     return row;
                 }
             };
+            System.out.println("WE FINISHED");
+            System.out.println(reccNames.toString());
             lv.setAdapter(arrayAdapter);
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -183,6 +187,9 @@ public class RecommendationsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommendations);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.recs_toolbae);
+        setSupportActionBar(toolbar);
 
         try {
             FileInputStream fis = openFileInput(JsonReader.HISTORY_FILENAME);

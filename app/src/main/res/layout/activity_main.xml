@@ -4,26 +4,30 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:gravity="center"
     tools:context="com.dubs.whatscooking.whatscooking.MainActivity">
 
+    <include
+        android:id="@+id/main_toolbae"
+        layout="@layout/toolbar" />
+  
     <Button
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:layout_marginTop="-7dp"
-        android:layout_marginBottom="-7dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
         android:id="@+id/pizza_house_button"
         android:drawableLeft="@drawable/picture1"
         android:background="@color/resA"
         android:text="Pizza House"
         android:textColor="@android:color/black"/>
 
-
     <Button
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:layout_marginTop="-7dp"
-        android:layout_marginBottom="-7dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
         android:id="@+id/panda_express_button"
         android:drawableLeft="@drawable/picture2"
         android:background="@color/resB"
@@ -32,9 +36,10 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:layout_marginTop="-7dp"
-        android:layout_marginBottom="-7dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
         android:id="@+id/no_thai_button"
         android:drawableLeft="@drawable/picture3"
         android:background="@color/resA"
@@ -43,9 +48,10 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:layout_marginTop="-7dp"
-        android:layout_marginBottom="-7dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
         android:id="@+id/chipotle_button"
         android:drawableLeft="@drawable/picture4"
         android:background="@color/resB"
@@ -54,9 +60,10 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:layout_marginTop="-7dp"
-        android:layout_marginBottom="-7dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
         android:id="@+id/piada_button"
         android:drawableLeft="@drawable/picture5"
         android:background="@color/resA"

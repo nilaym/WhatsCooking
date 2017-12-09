@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dubs.whatscooking.whatscooking.RecommendationsActivity">
+    tools:context="com.dubs.whatscooking.whatscooking.RecommendationsActivity" >
 
-    <include layout="@layout/content_restaurant_menu" />
+    <include android:id="@+id/recs_toolbae" layout="@layout/toolbar" />
 
     <ListView
         android:id="@+id/recs_list_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"></ListView>
+        app:layout_constraintTop_toBottomOf="@id/recs_toolbae"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 </android.support.constraint.ConstraintLayout>

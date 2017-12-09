@@ -3,6 +3,7 @@ package com.dubs.whatscooking.whatscooking;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +21,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TypefaceProvider.registerDefaultIconSets();
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbae);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Restaurant Selector");
 
         List<Integer> buttonIds = new ArrayList<>(Arrays.asList(R.id.chipotle_button,
                                                         R.id.no_thai_button, R.id.panda_express_button,
