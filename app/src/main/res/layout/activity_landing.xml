@@ -15,12 +15,8 @@
         android:layout_weight="1"
         android:background="@color/bg_screen2"
         android:text="Eating Out?"
-        android:textColor="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/b_cook"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="20dp"
+        android:textColor="@android:color/black" />
 
     <Button
         android:id="@+id/b_cook"
@@ -29,6 +25,7 @@
         android:layout_weight="1"
         android:background="@color/bg_screen3"
         android:text="Cooking at Home?"
+        android:textSize="20dp"
         android:textColor="@android:color/black" />
 
 </LinearLayout>

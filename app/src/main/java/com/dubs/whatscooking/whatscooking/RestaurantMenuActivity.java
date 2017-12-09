@@ -31,7 +31,7 @@ public class RestaurantMenuActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         final String restaurantName = bundle.getString("NAME");
         Toolbar toolbar = (Toolbar) findViewById(R.id.menu_toolbae);
-        toolbar.setTitle(restaurantName);
+        toolbar.setTitle(restaurantName.replaceAll("(\\p{Ll})(\\p{Lu})","$1 $2"));
         setSupportActionBar(toolbar);
 
         // TODO: FOR TESTING!!!
