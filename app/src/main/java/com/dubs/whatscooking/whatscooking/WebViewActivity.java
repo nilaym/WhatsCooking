@@ -8,7 +8,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class WebViewActivity extends AppCompatActivity {
 
@@ -25,6 +27,8 @@ public class WebViewActivity extends AppCompatActivity {
 
 
         WebView recWebView = (WebView) findViewById(R.id.recommendation_webview);
+        recWebView.setWebChromeClient(new WebChromeClient());
+        recWebView.setWebViewClient(new WebViewClient());
         recWebView.loadUrl(url);
     }
 
